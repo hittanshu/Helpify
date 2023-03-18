@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Find your NGO!</title>
+    <link href="//db.onlinewebfonts.com/c/5c803199923a6ed48112bebbb486b3e0?family=Lora" rel="stylesheet" type="text/css"/>
+    <link href="//db.onlinewebfonts.com/c/750e3658d4460a397a551dfac26bb272?family=Karla" rel="stylesheet" type="text/css"/>
+    <link href="//db.onlinewebfonts.com/c/623c7118249e082fe87a78e08506cb4b?family=Segoe+UI" rel="stylesheet" type="text/css"/>
+    <link rel="stylesheet" href="headfoot.css">
+</head>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<style>
+    table{
+        margin: auto;
+        table-layout: fixed;
+        text-align: center;
+        width: 80%;
+        margin-top: 30px;
+    }
+</style>
+<body>
+    <div class="navbar">
+        <nav>
+          <label class="logo">Helpify</label>
+          <ul>
+            <li><a href="homepage.html">About Us</a></li>
+            <li><a class="active" href="#">Find your NGO!</a></li>
+            <li><a href="#">NGO-NGO</a></li>
+            <li><a href="contact.html">Contact us</a></li>
+            <li><a href="login+reg.html">Login</a></li>
+          </ul>
+        </nav>
+      </div>
+
+      <div ng-app="myApp" ng-controller="namesCtrl">
+        <input type="text" placeholder="type to filter" ng-model="lookup" />
+        <table border="1" width="100%">
+        <tr>
+        <th ng-click="orderByMe('name')">Organisation Name</th>
+        <th ng-click="orderByMe('country')">Type</th>
+        <th ng-click="orderByMe('city')"> City</th>
+        </tr>
+        <tr ng-repeat="x in names | orderBy:myOrderBy | filter:lookup">
+        <td>{{x.name}}</td>
+        <td>{{x.country}}</td>
+        <td>{{x.city}}</td>
+        </tr>
+        </table>
+        
+        </div>
+        
+<script>
+    angular.module('myApp', []).controller('namesCtrl', function($scope) {
+        $scope.names = [
+            {name:'Swastikam',country:'Education', city:'Chennai'},
+            {name:'Chintan',country:'Human rights', city:'Mumbai'},
+            {name:'Mahesh',country:'Children', city:'Delhi'},
+            {name:'Hetal',country:'Humanitarian aids', city:'Kolkata'},
+            {name:'John',country:'Education', city:'Navi Mumbai'},
+            {name:'Gaurav',country:'Healthcare', city:'Kashmir'},
+            {name:'Binita',country:'Disabled children', city:'Surat'},
+            {name:'Madhura',country:'Social Welfare', city:'Chennai'},
+            {name:'Kamlesh',country:'Education', city:'Chennai'}
+            ];
+        $scope.orderByMe = function(x) {
+            $scope.myOrderBy = x;
+        }
+    });
+    </script>
+
+</body>
+</html>

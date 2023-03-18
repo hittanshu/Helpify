@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Helpify!</title>
+    <link rel="stylesheet" type="text/css" href="homepage.css">
+    <link href="//db.onlinewebfonts.com/c/5c803199923a6ed48112bebbb486b3e0?family=Lora" rel="stylesheet" type="text/css"/>
+    <link href="//db.onlinewebfonts.com/c/750e3658d4460a397a551dfac26bb272?family=Karla" rel="stylesheet" type="text/css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+</head>
+
+
+
+<style>
+
+</style>
+
+
+
+<body>
+
+<div class="navbar">
+  <nav>
+    <label class="logo">Helpify</label>
+    <ul>
+      <li><a class="active" href="#">About Us</a></li>
+      <li><a href="#">Find your NGO!</a></li>
+      <li><a href="#">NGO-NGO</a></li>
+      <li><a href="contact.html">Contact us</a></li>
+      <li><a href="login+reg.html">Login</a></li>
+    </ul>
+  </nav>
+</div>
+
+
+
+<div class="main_body">
+  
+
+  <!-- <img src="/images/kids.png" alt="kids" height="300px" width="400px" style="float:right; margin-right: 5px; border-radius: 10px;"> -->
+  <div class="p1">
+    <p class="h1" style="text-align: center" data-aos="fade-left">Partner with us in creating a positive change!</p1>
+    <p class="us" style="margin-top: 10px; text-align: center;" data-aos="fade-left">Helpify aims at bringing underpriveleged people voice out their needs on a bigger, better platform. There is a plethora of population 
+    residing in our country, deprived of fundamental amenities. We plan on moving toward helping people reach out to foster homes, donation drives.
+    Connecting you to the needy. Don't let your opportunity go to waste. Start today.</p>
+    <button type="button" class="register" onclick="location.href='login+reg.html'" data-aos="fade-left">Register Now</button>
+  </div>
+</div> 
+  
+<div class="middle">
+  <div class="quote" data-aos="fade-left">
+      <!--<p class="h1" style="margin-top: -10px;">Quote</p>-->
+      <p class="us" style="font-size: 30px; color: black; margin-top: -20px;">Money is not the only commodity that is fun to give. We can give time, we can give our expertise, we can give our love, or simply give a smile. What does that cost? The point is, none of us can ever run out of something worthwhile to give.</p>
+      <p style="color: black; margin-left: 47%; margin-top: 10px;">Steve Goodier</p>
+  </div>
+</div>    
+
+
+<div class="work" style="height: 600px;" data-aos="fade-left"><br><p class="h1"><b>Our Work!</b></p><hr>
+  <div class="bg">
+    <p class="h1" style="text-align: start; text-decoration: underline; margin-left: 20px;"><br>2022 milestone</p><br>
+    <p class="us" style="height: 200px; width: 600px; margin-left: 20px;">Our website and app has helped achieve several foster cares in Maharashtra to get the exposure they needed. Last year, 2022, Helpify contributed in accomplishing 23% of Maharashtra's NGO's to efficiently mamke use of their accomodities.</p>
+  </div>
+</div>
+
+<div class="socials"></div>
+
+<div class="footer">
+  <p style="font-size: extra-large;">Reach out to us</p><br>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <a href="#" class="fa fa-facebook"></a>
+  <a href="#" class="fa fa-twitter"></a>
+  <a href="#" class="fa fa-instagram"></a>
+  <a href="#" class="fa fa-youtube"></a>
+  <a href="#" class="fa fa-linkedin"></a>
+</div>
+
+<script>
+  var slideIndex = 1;
+  showDivs(slideIndex);
+  
+  function plusDivs(n) {
+    showDivs(slideIndex += n);
+  }
+  
+  function showDivs(n) {
+    var i;
+    var x = document.getElementsByClassName("mySlides");
+    if (n > x.length) {slideIndex = 1}
+    if (n < 1) {slideIndex = x.length}
+    for (i = 0; i < x.length; i++) {
+      x[i].style.display = "none";  
+    }
+    x[slideIndex-1].style.display = "block";  
+  }
+  </script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+<script>
+    AOS.init({
+        duration:1000,
+        delay:400
+    });
+</script>
+</body>
+</html>
+
