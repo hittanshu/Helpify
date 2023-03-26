@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NGO-NGO!</title>
+    <link href="//db.onlinewebfonts.com/c/5c803199923a6ed48112bebbb486b3e0?family=Lora" rel="stylesheet" type="text/css"/>
+    <link href="//db.onlinewebfonts.com/c/750e3658d4460a397a551dfac26bb272?family=Karla" rel="stylesheet" type="text/css"/>
+    <link href="//db.onlinewebfonts.com/c/623c7118249e082fe87a78e08506cb4b?family=Segoe+UI" rel="stylesheet" type="text/css"/>
+    <link rel="stylesheet" href="headfoot.css">
+</head>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<style>
+    table{
+        margin: auto;
+        table-layout: fixed;
+        text-align: center;
+        width: 80%;
+        margin-top: 30px;
+    }
+</style>
+<body>
+    <div class="navbar">
+        <nav>
+          <label class="logo">Helpify</label>
+          <ul>
+            <li><a href="homepage.html">About Us</a></li>
+            <li><a class="active" href="#">Find your NGO!</a></li>
+            <li><a href="#">NGO-NGO</a></li>
+            <li><a href="contact.html">Contact us</a></li>
+            <li><a href="login+reg.html">Login</a></li>
+          </ul>
+        </nav>
+      </div>
+
+      <div ng-app="myApp" ng-controller="namesCtrl">
+        <input type="text" placeholder="search with keywords" ng-model="lookup" />
+        <table border="1" width="100%">
+        <tr>
+        <th ng-click="orderByMe('name')">Organisation Name</th>
+        <th ng-click="orderByMe('desc')">Resources in need of</th>
+        <th ng-click="orderByMe('link')">Connect!</th>
+        </tr>
+        <tr ng-repeat="x in names | orderBy:myOrderBy | filter:lookup" style="height: 60px">
+        <td>{{x.name}}</td>
+        <td>{{x.desc}}</td>
+        <td><button ng-href="{{names.link}}">Contact us here!</button></td>
+        </tr>
+        </table>
+        
+        </div>
+        
+<script>
+    angular.module('myApp', []).controller('namesCtrl', function($scope) {
+        $scope.names = [
+            {name:'Swastikam',desc: 'Lacking resources related to fabrics.',link:'https://www.narayanseva.org/donate/contribute-us/?gclid=Cj0KCQjw2v-gBhC1ARIsAOQdKY23xUUQz1vbN3vFkwU7_PdKJwqnsH32UFeQrjTM7KI-PajtQITH0AsaAk4dEALw_wcB'},
+            {name:'Chintan',desc: 'Lacking resources related to educational material, books will be appreciated.'},
+            {name:'Mahesh',desc: 'Lacking resources related to hygiene. Help deeply appreciated for girls.'},
+            {name:'Hetal',desc: 'Lacking resources related to electronic gadgets. Second hand materials collection open.'},
+            {name:'John',desc: 'Lacking resources related to clothes for the children.'},
+            {name:'Gaurav',desc: 'Lacking resources related to medication for our foster care of puppies and dogs.'},
+            {name:'Binita',desc: 'Lacking resources related to animal and vet suggested food for rescued animals.'},
+            {name:'Madhura',desc: 'Lacking resources related to hygiene for daily use.'},
+            {name:'Kamlesh',desc: 'Lacking resources related to fabrics.'}
+            ];
+        $scope.orderByMe = function(x) {
+            $scope.myOrderBy = x;
+        }
+    });
+    </script>
+
+</body>
+</html>
