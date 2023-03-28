@@ -8,48 +8,51 @@
     <link href="//db.onlinewebfonts.com/c/5c803199923a6ed48112bebbb486b3e0?family=Lora" rel="stylesheet" type="text/css"/>
     <link href="//db.onlinewebfonts.com/c/750e3658d4460a397a551dfac26bb272?family=Karla" rel="stylesheet" type="text/css"/>
     <link href="//db.onlinewebfonts.com/c/623c7118249e082fe87a78e08506cb4b?family=Segoe+UI" rel="stylesheet" type="text/css"/>
-    <link rel="stylesheet" href="headfoot.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+    <link rel="stylesheet" type="text/css" href="findngo.css">
 </head>
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
-<style>
-    table{
-        margin: auto;
-        table-layout: fixed;
-        text-align: center;
-        width: 80%;
-        margin-top: 30px;
-    }
-</style>
+
 <body>
     <div class="navbar">
         <nav>
           <label class="logo">Helpify</label>
           <ul>
             <li><a href="homepage.html">About Us</a></li>
-            <li><a class="active" href="#">Find your NGO!</a></li>
-            <li><a href="#">NGO-NGO</a></li>
+            <li><a class="active" href="findngo.html">Find your NGO!</a></li>
+            <li><a href="ngo-ngo.html">NGO-NGO</a></li>
             <li><a href="contact.html">Contact us</a></li>
             <li><a href="login+reg.html">Login</a></li>
           </ul>
         </nav>
       </div>
+    
+    <div>
+        <img src="https://images.livemint.com/img/2021/05/12/1600x900/ca03b508-b306-11eb-8e1b-80b8ec5f5986_1620834068460_1620834233590.jpg" style="width:100%">
+        <span data-aos="fade-left">We aim at Helping you find NGOs who need you.<br> Or even near you for offline donations!<br> Donate to make a difference! </span>
+    </div>
 
-      <div ng-app="myApp" ng-controller="namesCtrl">
-        <input type="text" placeholder="type to filter" ng-model="lookup" />
-        <table border="1" width="100%">
+    <div ng-app="myApp" ng-controller="namesCtrl">
+        <input type="text" class="search-box" placeholder="Type to filter" ng-model="lookup" />
+        <div class="table-container">
+        <table class="my-table" border="1" width="100%">
         <tr>
         <th ng-click="orderByMe('name')">Organisation Name</th>
         <th ng-click="orderByMe('country')">Type</th>
         <th ng-click="orderByMe('city')"> City</th>
+        <th ng-click="orderByMe('payment')">Scan to donate!</th>
+        <th ng-click="orderByMe('visit')">Visit us!</th>
         </tr>
-        <tr ng-repeat="x in names | orderBy:myOrderBy | filter:lookup">
+        <tr ng-repeat="x in names | orderBy:myOrderBy | filter:lookup " style="height: 60px;">
         <td>{{x.name}}</td>
         <td>{{x.country}}</td>
         <td>{{x.city}}</td>
+        <td><img src="https://randomqr.com/assets/images/randomqr-256.png" width="200" height="150"></td>
+        <td><button class="edit-btn">Contact us here!</button></td>
         </tr>
         </table>
-        
         </div>
+    </div>
         
 <script>
     angular.module('myApp', []).controller('namesCtrl', function($scope) {
@@ -69,6 +72,24 @@
         }
     });
     </script>
+
+<div class="footer">
+    <p style="font-size: extra-large; font-family:'Times New Roman', Times, serif">Reach out to us</p><br>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <a href="#" class="fa fa-facebook"></a>
+    <a href="#" class="fa fa-twitter"></a>
+    <a href="#" class="fa fa-instagram"></a>
+    <a href="#" class="fa fa-youtube"></a>
+    <a href="#" class="fa fa-linkedin"></a>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script>
+    AOS.init({
+        duration:1000,
+        delay:400
+    });
+</script>
 
 </body>
 </html>
