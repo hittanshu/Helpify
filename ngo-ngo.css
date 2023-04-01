@@ -146,7 +146,7 @@
     color: white;
     text-align: center;
     font-family: "Times New Roman, Times, serif";
-    background-color: rgba(253, 244, 244, 0.405);
+    /*background-color: rgba(253, 244, 244, 0.405);*/
     opacity: 0.01;
   }
 
