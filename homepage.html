@@ -6,30 +6,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Helpify!</title>
     <link rel="stylesheet" type="text/css" href="homepage.css">
-    <link href="//db.onlinewebfonts.com/c/5c803199923a6ed48112bebbb486b3e0?family=Lora" rel="stylesheet" type="text/css"/>
-    <link href="//db.onlinewebfonts.com/c/750e3658d4460a397a551dfac26bb272?family=Karla" rel="stylesheet" type="text/css"/>
+    <!--<link href="//db.onlinewebfonts.com/c/5c803199923a6ed48112bebbb486b3e0?family=Lora" rel="stylesheet" type="text/css"/>
+    <link href="//db.onlinewebfonts.com/c/750e3658d4460a397a551dfac26bb272?family=Karla" rel="stylesheet" type="text/css"/>-->
+    <link rel="preconnect" href="https://fonts.gstatic.com"/>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 </head>
-
-
-
-<style>
-
-</style>
-
-
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
 
 <body>
 
 <div class="navbar">
   <nav>
-    <label class="logo">Helpify</label>
+    <label style="font-family: 'Times New Roman', Times, serif; font-size: 35px; margin: 10%; margin-top: 10px; font-weight: 200; color: black;">Helpify</label>
     <ul>
-      <li><a class="active" href="#">About Us</a></li>
-      <li><a href="#">Find your NGO!</a></li>
-      <li><a href="#">NGO-NGO</a></li>
+      <li><a class="active" href="homepage.html">About Us</a></li>
+      <li><a href="findngo.html">Find your NGO!</a></li>
+      <li><a href="ngo-ngo.html">NGO-NGO</a></li>
       <li><a href="contact.html">Contact us</a></li>
       <li><a href="login+reg.html">Login</a></li>
     </ul>
@@ -43,11 +41,63 @@
 
   <!-- <img src="/images/kids.png" alt="kids" height="300px" width="400px" style="float:right; margin-right: 5px; border-radius: 10px;"> -->
   <div class="p1">
-    <p class="h1" style="text-align: center" data-aos="fade-left">Partner with us in creating a positive change!</p1>
+    <p style="text-align: center; font-family: Inter; font-weight: bold; color: white; font-size: 40px;" data-aos="fade-left">Partner with us in creating a positive change!</p1>
     <p class="us" style="margin-top: 10px; text-align: center;" data-aos="fade-left">Helpify aims at bringing underpriveleged people voice out their needs on a bigger, better platform. There is a plethora of population 
     residing in our country, deprived of fundamental amenities. We plan on moving toward helping people reach out to foster homes, donation drives.
     Connecting you to the needy. Don't let your opportunity go to waste. Start today.</p>
-    <button type="button" class="register" onclick="location.href='login+reg.html'" data-aos="fade-left">Register Now</button>
+    <button type="button" class="register" onclick="on()" data-aos="fade-left">Register Now</button><!--onclick="location.href='login+reg.html'"-->
+    <div id="overlay-content" ng-app="myApp" ng-controller="formCtrl">
+      <h1 style="display:inline-block;margin-right:10px;">NGO Registration Form</h1>
+      <button class="close-button" onclick="off()" style="display:inline-block; background:transparent; border:none;">&times;</button>
+    
+      <form name="registrationForm" ng-submit="submitForm(registrationForm.$valid)" novalidate>
+          <label for="name">Name of NGO</label>
+          <input type="text" id="name" name="name" ng-model="ngo.name" required>
+    
+          <div ng-show="registrationForm.name.$touched && registrationForm.name.$error.required">Name is required</div>
+    
+          <label for="mission">Mission and Objectives</label>
+          <textarea id="mission" name="mission" ng-model="ngo.mission" required></textarea>
+    
+          <div ng-show="registrationForm.mission.$touched && registrationForm.mission.$error.required">Mission and Objectives are required</div>
+    
+          <label for="address">Address</label>
+          <textarea id="address" name="address" ng-model="ngo.address" required></textarea>
+    
+          <div ng-show="registrationForm.address.$touched && registrationForm.address.$error.required">Address is required</div>
+    
+          <label for="contact">Contact Details</label>
+          <textarea id="contact" name="contact" ng-model="ngo.contact" required></textarea>
+    
+          <div ng-show="registrationForm.contact.$touched && registrationForm.contact.$error.required">Contact Details are required</div>
+    
+          <label for="document">Governing Document</label>
+          <input type="file" id="document" name="document" ng-model="ngo.document"> <br>
+    
+    
+          <input type="submit" value="Submit" ng-disabled="registrationForm.$invalid">
+      </form>
+    
+      <script>
+        function on() {
+          document.getElementById("overlay-content").style.display = "block";
+        }
+        function off(){
+          document.getElementById("overlay-content").style.display = "none";
+        }
+          var app = angular.module("myApp", []);
+          app.controller("formCtrl", function($scope, $window) {
+              $scope.submitForm = function(isValid) {
+                  if (isValid) {
+                      $window.alert('Form submitted successfully!');
+                      off();
+                  } else {
+                      console.log('Form is invalid');
+                  }
+              };
+          });
+      </script>
+    </div>
   </div>
 </div> 
   
@@ -55,28 +105,61 @@
   <div class="quote" data-aos="fade-left">
       <!--<p class="h1" style="margin-top: -10px;">Quote</p>-->
       <p class="us" style="font-size: 30px; color: black; margin-top: -20px;">Money is not the only commodity that is fun to give. We can give time, we can give our expertise, we can give our love, or simply give a smile. What does that cost? The point is, none of us can ever run out of something worthwhile to give.</p>
-      <p style="color: black; margin-left: 47%; margin-top: 10px;">Steve Goodier</p>
+      <p style="color: black; margin-left: 0%; margin-top: 10px;">~Steve Goodier</p>
   </div>
 </div>    
 
 
-<div class="work" style="height: 600px;" data-aos="fade-left"><br><p class="h1"><b>Our Work!</b></p><hr>
-  <div class="bg">
-    <p class="h1" style="text-align: start; text-decoration: underline; margin-left: 20px;"><br>2022 milestone</p><br>
-    <p class="us" style="height: 200px; width: 600px; margin-left: 20px;">Our website and app has helped achieve several foster cares in Maharashtra to get the exposure they needed. Last year, 2022, Helpify contributed in accomplishing 23% of Maharashtra's NGO's to efficiently mamke use of their accomodities.</p>
-  </div>
+<div class="work" style="height: 600px;" data-aos="fade-left"><br><p style="font-family: Inter; font-weight: bold; color: white; font-size: 50px; text-align: center;"><b>Our Story!</b></p><hr>
+  <div id="myCarousel" class="carousel slide" data-ride="carousel">
+    <!-- Indicators -->
+    <ol class="carousel-indicators">
+      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+      <li data-target="#myCarousel" data-slide-to="1"></li>
+      <li data-target="#myCarousel" data-slide-to="2"></li>
+    </ol>
+  
+    <!-- Wrapper for slides -->
+    <div class="carousel-inner">
+      <div class="item active">
+        <img src="https://www.parkshala.com/img/dentalcamp/3.jpg" width="20000" height="8000" alt="Image 1">
+      </div>
+  
+      <div class="item">
+        <img src="https://www.parkshala.com/img/art/2.jpg" width="20000" height="100"alt="Image 2">
+      </div>
+  
+      <div class="item">
+        <img src="http://3.bp.blogspot.com/-VkADn-CAJWo/UMsAWcqZQhI/AAAAAAAADWs/cvKDrujmISo/s1600/467969_398309740213517_836259615_o.jpg" width="20000" height="100" alt="Image 3">
+      </div>
+    </div>
+  
+    <!-- Left and right controls -->
+    <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+      <span class="glyphicon glyphicon-chevron-left"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="right carousel-control" href="#myCarousel" data-slide="next">
+      <span class="glyphicon glyphicon-chevron-right"></span>
+      <span class="sr-only">Next</span>
+    </a>
+  </div>  
 </div>
 
-<div class="socials"></div>
+<br><br><br><br><br><br><br><br><br><br>
 
 <div class="footer">
-  <p style="font-size: extra-large;">Reach out to us</p><br>
+  <p style="font-family: Inter; font-size: 15px; font-weight: bold;">Reach out to us</p><br>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <a href="#" class="fa fa-facebook"></a>
   <a href="#" class="fa fa-twitter"></a>
   <a href="#" class="fa fa-instagram"></a>
   <a href="#" class="fa fa-youtube"></a>
   <a href="#" class="fa fa-linkedin"></a>
+</div>
+
+<div>
+  <p style="font-family: Inter; text-align: center; margin-top: 5px; font-weight: bold; color:white;">&copy; 2023 <a href="homepage.html">Helpify</a> | All Rights Reserved</p>
 </div>
 
 <script>

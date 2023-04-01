@@ -99,7 +99,7 @@
     color: white;
     text-align: center;
     height: 150px;
-    font-family: 'Times New Roman', Times, serif;
+    font-family: "Inter", sans-serif;
     font-size: large;
   }
   
@@ -167,13 +167,13 @@
   span {
     position: absolute;
     top: 35%;
-    left: 20%;
+    left: 15%;
     transform: translate(-50%, -50%);
     font-size: 45px;
-    font-weight: medium;
+    font-weight: bold;
     color: white;
     text-align: center;
-    font-family: "Times New Roman, Times, serif";
+    font-family: "Inter", sans-serif;
   }
 
   button {
