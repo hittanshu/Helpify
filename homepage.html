@@ -48,35 +48,54 @@
     <button type="button" class="register" onclick="on()" data-aos="fade-left">Register Now</button><!--onclick="location.href='login+reg.html'"-->
     <div id="overlay-content" ng-app="myApp" ng-controller="formCtrl">
       <h1 style="display:inline-block;margin-right:10px;">NGO Registration Form</h1>
-      <button class="close-button" onclick="off()" style="display:inline-block; background:transparent; border:none;">&times;</button>
+      <button class="close-button" onclick="off()" style="display:inline-block; background:transparent; border:none; float:right;">&times;</button>
     
-      <form name="registrationForm" ng-submit="submitForm(registrationForm.$valid)" novalidate>
-          <label for="name">Name of NGO</label>
-          <input type="text" id="name" name="name" ng-model="ngo.name" required>
-    
-          <div ng-show="registrationForm.name.$touched && registrationForm.name.$error.required">Name is required</div>
-    
-          <label for="mission">Mission and Objectives</label>
-          <textarea id="mission" name="mission" ng-model="ngo.mission" required></textarea>
-    
-          <div ng-show="registrationForm.mission.$touched && registrationForm.mission.$error.required">Mission and Objectives are required</div>
-    
+      <form name="registrationForm" action='ngoregistration.php' method="post" ng-submit="submitForm(registrationForm.$valid)" novalidate>
+        <div class="form-row">
+          <label for="orgName">Organization Name</label>
+          <input type="text" id="orgName" name="orgName" ng-model="ngo.orgName" required>
+          <label for="type">Type of NGO</label>
+          <select id="type" name="type" ng-model="ngo.type" required>
+            <option value="" disabled selected>Please select an option</option>
+            <option value="Charity">Charity</option>
+            <option value="Non-profit">Non-profit</option>
+            <option value="Advocacy">Advocacy</option>
+            <option value="International">International</option>
+            <option value="Community-based">Community-based</option>
+            <option value="Research and Education">Research and Education</option>
+            <option value="Religious">Religious</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
+        <div class="form-row">
           <label for="address">Address</label>
           <textarea id="address" name="address" ng-model="ngo.address" required></textarea>
-    
-          <div ng-show="registrationForm.address.$touched && registrationForm.address.$error.required">Address is required</div>
-    
+        </div>
+        <div class="form-row">
           <label for="contact">Contact Details</label>
-          <textarea id="contact" name="contact" ng-model="ngo.contact" required></textarea>
-    
-          <div ng-show="registrationForm.contact.$touched && registrationForm.contact.$error.required">Contact Details are required</div>
-    
+          <input type="text" id="contact" name="contact" ng-model="ngo.contact" required>
+        </div>
+        <div class="form-row">
+          <label for="mission">Missions and Objectives</label>
+          <textarea id="mission" name="mission" ng-model="ngo.mission" required></textarea>
+        </div>
+        <div class="form-row">
+          <label for="resources">Lack of Resources</label>
+          <textarea id="resources" name="resources" ng-model="ngo.resources"></textarea>
+        </div>
+        <div class="form-row">
+          <label for="payment-link">Payment Link</label>
+          <input type="text" id="payment_link" name="payment_link" ng-model="ngo.paymentLink">
+          <label for="website">Link to Website</label>
+          <input type="text" id="website" name="website" ng-model="ngo.website" placeholder="https://www.example.com">
           <label for="document">Governing Document</label>
-          <input type="file" id="document" name="document" ng-model="ngo.document"> <br>
-    
-    
-          <input type="submit" value="Submit" ng-disabled="registrationForm.$invalid">
+          <input type="file" id="document" name="document" ng-model="ngo.document">
+        <div class="form-actions">
+            <input type="submit" name="save" value="Submit" ng-disabled="registrationForm.$invalid"> 
+        </div>
       </form>
+      
+    
     
       <script>
         function on() {

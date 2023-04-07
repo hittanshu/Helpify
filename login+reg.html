@@ -23,7 +23,7 @@
   });
 </script>
 
-<!--<script>
+<script>
   var app = angular.module('myApp', []);
   app.controller('myCtrl', function($scope) {
       $scope.submitSignForm = function() {
@@ -32,22 +32,6 @@
           }
       };
   });
-</script>-->
-
-<script type="text/javascript">
-
-  var app = angular.module('myApp', []);
-  
-  app.controller('myCtrl', function ($scope) {
-  
-  $scope.sendForm = function () {
-  
-  $scope.msg = "Form Validated";
-  
-  };
-  
-  });
-  
 </script>
 
 <script>
@@ -75,7 +59,7 @@
         <div class="login">
             <h1>Welcome back!</h1><br><br>
             <p style="text-align: left; font-family: Karla; margin-left: 50px;">Please sign in to continue your<br> journey with us!</p><br><br>
-            <form name="loginForm" ng-submit="submitLoginForm()">
+            <form name="loginForm" ng-submit="submitLoginForm()" method="post">
               <label for="username">Username:</label>
               <input type="text" id="username" placeholder="Email or contact number" style="width: 180px" name="username" ng-model="username" ng-pattern="/^(?:[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}|\d{10,12})$/" required/>
               <div ng-show="loginForm.username.$error.required && loginForm.username.$dirty">
@@ -86,7 +70,7 @@
               </div><br>
             
               <label for="password">Password:</label>
-              <input type="password" id="password" name="password" style="width: 180px" ng-model="password" ng-minlength="6" required/>
+              <input type="password" id="password" name="password" placeholder="Password" style="width: 180px" ng-model="password" ng-minlength="6" required/>
               <div ng-show="loginForm.password.$error.required && loginForm.password.$dirty">
                 <small class="error" style="color:red;">Password is required.</small>
               </div>
@@ -94,13 +78,13 @@
                 <small class="error" style="color:red;">Password should be at least 6 characters long.</small>
               </div>
             
-              <input type="submit" value="Sign In">
+              <input type="submit" name='save' value="Sign In">
             </form> 
         </div>
         <div class="vr"></div>
         <div class="reg">
             <h1 style="text-align: center;">Create Account</h1>
-            <form name="SignForm" novalidate ng-submit="SignForm.$valid &&sendForm()">
+            <form action = 'userregistration.php' method='post' name="SignForm" ng-submit="submitSignForm()" novalidate>
 
                 <input type="text" id="first-name" name="first-name" placeholder="First name" ng-pattern="/[a-zA-Z\s]+/"required>
                 
@@ -122,27 +106,14 @@
                   <option value="thane">Thane</option>
                   <option value="palghar">Palghar</option>
                   <option value="raigad">Raigad</option>
-                  </select><p id="pT" style="margin-left: 10px;"></p><br>
+                  </select><p id="pT" style="margin-left: 10px;"></p><br><br>
 
-                  <input type="text" name="number" id="number" ng-model="con" placeholder="Contact" ng-pattern="/^\d{10,}(?:,\d{10,})*$/" ng-required="!SignForm.number.$pristine" />
-                  <span style="color:Red" ng-show="SignForm.number.$error.required && !SignForm.number.$pristine"> Required. </span>
-                  <span style="color:Red" ng-show="SignForm.number.$dirty&&SignForm.number.$error.pattern">Enter valid contact.</span><br>
+                <input type="text" name="number" placeholder="Contact">
+                <input type="text" name="email" placeholder="Email">
+                <input type="password" id="password" name="password" placeholder="Password" ng-model="pass" ng-minlength="6" required>
+                <input type="password" id="confirm-password" name="confirm-password" placeholder="Confirm-Password" required><br>
                 
-                  <input type="text" name="email" ng-model="txtmail" placeholder="Email" ng-pattern="/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/" ng-required="!SignForm.email.$pristine" />
-                  <span style="color:Red" ng-show="SignForm.email.$error.required && !SignForm.email.$pristine"> Required. </span>
-                  <span style="color:Red" ng-show="SignForm.email.$dirty&&SignForm.email.$error.pattern">Please Enter Valid Email.</span> <br />
-
-                  <input type="password" name="password" id="password" placeholder="Password" ng-minlength="6" ng-model="pass" ng-pattern="/^.{6,}$/" ng-required="!SignForm.password.$pristine" />
-                  <span style="color:Red" ng-show="SignForm.password.$error.required && !SignForm.password.$pristine"> Required. </span>
-                  <span style="color:Red" ng-show="SignForm.password.$dirty&&SignForm.password.$error.pattern">Min 6 characters.</span> <br>
-                  
-<input type="password" id="confirm-password" name="confirm-password" placeholder="Confirm-Password" ng-model="confirmPass" ng-pattern="/^{{pass}}$/" ng-required="!SignForm['confirm-password'].$pristine">
-<span style="color:Red" ng-show="SignForm['confirm-password'].$error.required && !SignForm['confirm-password'].$pristine"> Required. </span>
-<span style="color:Red" ng-show="SignForm['confirm-password'].$dirty&&SignForm['confirm-password'].$error.pattern">Passwords do not match.</span> <br>
-
-
-                <input type="submit" value="Sign Up" style="margin-left: 17%;">
-                <span>{{msg}}</span>
+                <input type="submit" value="Sign Up" name = 'save' style="margin-left: 17%;">
               </form>
         </div>
     </div>

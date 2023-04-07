@@ -34,48 +34,49 @@
         <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.5);"></div>
         <span data-aos="fade-left">We aim at Helping you find NGOs who need you.<br> Or even near you for offline donations!<br> Donate to make a difference! </span>
       </div>
-      
-
-    <div ng-app="myApp" ng-controller="namesCtrl">
-        <input type="text" class="search-box" placeholder="Type to filter" ng-model="lookup" />
-        <div class="table-container">
-        <table class="my-table" border="1" width="100%">
-        <tr>
-        <th ng-click="orderByMe('name')">Organisation Name</th>
-        <th ng-click="orderByMe('country')">Type</th>
-        <th ng-click="orderByMe('city')"> City</th>
-        <th ng-click="orderByMe('payment')">Scan to donate!</th>
-        <th ng-click="orderByMe('visit')">Visit us!</th>
-        </tr>
-        <tr ng-repeat="x in names | orderBy:myOrderBy | filter:lookup " style="height: 60px;">
-        <td>{{x.name}}</td>
-        <td>{{x.country}}</td>
-        <td>{{x.city}}</td>
-        <td><img src="https://randomqr.com/assets/images/randomqr-256.png" width="200" height="150"></td>
-        <td><button class="edit-btn">Contact us here!</button></td>
-        </tr>
-        </table>
+    
+    
+      <div ng-app="myApp" ng-controller="myCtrl">
+        <input type="text" class="search-box" placeholder="Search with keywords" ng-model="lookup" />
+        <div id="ngo-table" class="table-container">
+          <table>
+            <thead>
+              <tr>
+                <th>Organisation Name</th>
+                <th>Type of organisation</th>
+                <th>Address</th>
+                <th>Payment Link</th>
+                <th>Website</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr ng-repeat="ngo in ngos | filter: lookup">
+                <td>{{ ngo.organisation_name }}</td>
+                <td>{{ ngo.ngo_type }}</td>
+                <td>{{ ngo.ngo_address }}</td>
+                <td><a href="{{ ngo.payment_link }}">{{ ngo.payment_link }}</a></td>
+                <td><a href="{{ ngo.website }}">{{ ngo.website }}</a></td>
+              </tr>
+            </tbody>
+          </table>
         </div>
-    </div>
-        
-<script>
-    angular.module('myApp', []).controller('namesCtrl', function($scope) {
-        $scope.names = [
-            {name:'Swastikam',country:'Education', city:'Chennai'},
-            {name:'Chintan',country:'Human rights', city:'Mumbai'},
-            {name:'Mahesh',country:'Children', city:'Delhi'},
-            {name:'Hetal',country:'Humanitarian aids', city:'Kolkata'},
-            {name:'John',country:'Education', city:'Navi Mumbai'},
-            {name:'Gaurav',country:'Healthcare', city:'Kashmir'},
-            {name:'Binita',country:'Disabled children', city:'Surat'},
-            {name:'Madhura',country:'Social Welfare', city:'Chennai'},
-            {name:'Kamlesh',country:'Education', city:'Chennai'}
-            ];
-        $scope.orderByMe = function(x) {
-            $scope.myOrderBy = x;
-        }
+      </div>
+
+      <script>
+    // Define the Angular module
+    var app = angular.module("myApp", []);
+
+    // Define the Angular controller
+    app.controller("myCtrl", function($scope, $http) {
+    $http.get("displayfindngo.php")
+        .then(function(response) {
+        $scope.ngos = response.data;
+        });
     });
-    </script>
+
+      </script>
+
+
 
 <div class="footer">
     <p style="font-size: extra-large; font-family:'Times New Roman', Times, serif">Reach out to us</p><br>
@@ -101,3 +102,4 @@
 
 </body>
 </html>
+
